@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Skin Disease Diagnostic Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/admin_dashboard.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='img/favicon.ico') }}" alt="Logo" class="logo">
+            <h1>Admin Dashboard</h1>
+        </div>
+        <nav>
+            <ul>
+                <!-- <li><a href="Home.html">Home</a></li>
+                <li><a href="Dashboard.html">Dashboard</a></li>
+                <li><a href="Users.html">Users</a></li>
+                <li><a href="Doctors.html">Doctors</a></li>
+                <li><a href="Analytics.html">Analytics</a></li>
+                <li><a href="Testimonials.html">Testimonials</a></li> -->
+                <li><a href="Logout.html">Logout</a></li>
+            </ul>
+        </nav>
+        <button id="sidebar-toggle" class="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <div class="container">
+    
+
+        <main>
+            <section class="welcome-section">
+                <h2>Welcome, <span id="admin-name">Admin</span>!</h2>
+            </section>
+
+            <section class="stats-widgets">
+                <div class="widget">
+                    <h3>User Stats</h3>
+                    <p>Total Users: <span id="total-users">0</span></p>
+                    <p>Active Users: <span id="active-users">0</span></p>
+                </div>
+                <div class="widget">
+                    <h3>Doctor Stats</h3>
+                    <p>Total Doctors: <span id="total-doctors">0</span></p>
+                    <p>Pending Approvals: <span id="pending-approvals">0</span></p>
+                </div>
+                <div class="widget">
+                    <h3>Testimonial Stats</h3>
+                    <p>Active Testimonials: <span id="active-testimonials">0</span></p>
+                </div>
+            </section>
+
+            <section class="charts">
+                <div class="chart-container">
+                    <canvas id="disease-chart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="user-growth-chart"></canvas>
+                </div>
+            </section>
+
+            <section class="manage-sections">
+                <button class="manage-button" id="manage-users-btn" >Manage Users</button>
+                <button class="manage-button" id="manage-doctors-btn">Manage Doctors</button>
+                <button class="manage-button" id="manage-testimonials-btn">Manage Testimonials</button>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>Admin Dashboard © 2024 | <a href="#">Terms</a> | <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <div id="loading-spinner" class="loading-spinner">
+        <img src="{{ url_for('static', filename='img/favicon.ico') }}" alt="Loading...">
+    </div>
+
+    <!-- Pop-up sliding windows -->
+    <div class="popup-overlay"></div>
+    <div class="popup-window" id="users-popup">
+        <h2>Manage Users</h2>
+        <div class="popup-content">
+            <!-- User list will be dynamically populated here -->
+        </div>
+    </div>
+    <div id="doctors_popup" class="popup-window" id="doctors-popup">
+        <h2>Manage Doctors</h2>
+        <div class="popup-content">
+            <!-- Doctor list will be dynamically populated here -->
+        </div>
+    </div>
+    <div class="popup-window" id="testimonials-popup">
+        <h2>Manage Testimonials</h2>
+        <div class="popup-content">
+            <!-- Testimonial list will be dynamically populated here -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script/admin_dashboard.js') }}"></script>
+</body>
+</html>

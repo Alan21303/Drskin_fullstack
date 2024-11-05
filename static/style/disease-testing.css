@@ -1,0 +1,548 @@
+:root {
+  --primary-color: #6a11cb;
+  --secondary-color: #2575fc;
+  --accent-color: #ff6b6b;
+  --background-start: #f3e7e9;
+  --background-end: #d3cce3;
+  --text-color: #2c3e50;
+  --white: #ffffff;
+  --green: #27ae60;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo img {
+  transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 2rem;
+}
+
+nav ul li a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+.menu-icon {
+  display: none;
+}
+
+/* Main Content Styles */
+main {
+  padding-top: 80px;
+  flex-grow: 1;
+}
+
+section {
+  padding: 4rem 0;
+}
+
+h1, h2 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+/* Testing Instructions */
+.testing-instructions ul {
+  list-style-type: none;
+  padding-left: 1.5rem;
+}
+
+.testing-instructions li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.testing-instructions .icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--text-color);
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/* Image Upload Section */
+.image-upload .container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
+  padding: 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.upload-area {
+  border: 2px dashed var(--secondary-color);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  border-color: var(--primary-color);
+}
+
+.upload-area svg {
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.upload-area:hover svg {
+  transform: scale(1.1);
+}
+
+.upload-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.file-preview {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.file-preview img {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.delete-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: var(--accent-color);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: var(--primary-color);
+}
+
+/* Loading Overlay  */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.loading-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.spinner {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+  color: var(--white);
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Result Display Section */
+.result-display {
+  background-color: var(--white);
+  border-radius: 25px;
+  padding: 2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.predicted-disease h2 {
+  color: var(--primary-color);
+}
+
+.disease-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.disease-summary {
+  font-style: italic;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.accordion {
+  margin-top: 1rem;
+}
+
+.accordion-toggle {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-toggle:hover {
+  background-color: var(--primary-color);
+}
+
+.accordion-toggle .icon-minus {
+  display: none;
+}
+
+.accordion-toggle[aria-expanded="true"] .icon-plus {
+  display: none;
+}
+
+.accordion-toggle[aria-expanded="true"] .icon-minus {
+  display: inline;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-content.show {
+  max-height: 500px;
+}
+
+.recommendations {
+  margin-top: 2rem;
+  color: var(--green);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.recommendations svg {
+  margin-right: 0.5rem;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.print-button, .home-button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.print-button {
+  background-color: var(--accent-color);
+  color: var(--white);
+}
+
+.home-button {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+.print-button:hover, .home-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.print-button svg, .home-button svg {
+  margin-right: 0.5rem;
+}
+
+/* Footer Styles */
+footer {
+  background-color: var(--white);
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  margin: 0 1rem;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer-logo {
+  text-align: center;
+}
+
+.footer-logo img {
+  transition: transform 0.3s ease;
+}
+
+.footer-logo img:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--primary-color);
+    padding: 1rem 0;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .print-button, .home-button {
+    width: 100%;
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .upload-area {
+    padding: 1rem;
+  }
+
+  .file-preview img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}
+
+@media print {
+  header, .image-upload, .upload-button, .action-buttons, footer {
+    display: none;
+  }
+
+  body {
+    background: none;
+  }
+
+  .result-display {
+    box-shadow: none;
+    margin-top: 0;
+  }
+
+  .accordion-content {
+    max-height: none;
+    overflow: visible;
+  }
+}

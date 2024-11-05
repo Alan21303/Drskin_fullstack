@@ -1,0 +1,280 @@
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --accent-color: #ff6b6b;
+    --background-start: #f3e7e9;
+    --background-end: #d3cce3;
+    --text-color: #2c3e50;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: white;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo img {
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.1) rotate(15deg);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+.menu-icon {
+    display: none;
+}
+
+/* Main Content Styles */
+main {
+    padding-top: 80px;
+}
+
+section {
+    padding: 4rem 0;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Welcome Banner */
+.welcome-banner {
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.quick-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* About Section */
+.about-section .feature {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.about-section .feature:hover {
+    transform: translateY(-5px);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background: var(--white);
+}
+
+.carousel {
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.testimonial {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);}
+
+.testimonial.active {
+    opacity: 1;
+}
+
+.testimonial p {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial cite {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* Footer Styles */
+footer {
+    background: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-logo img {
+    transition: transform 0.3s ease;
+}
+
+.footer-logo img:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .menu-icon span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: var(--text-color);
+        margin: 5px 0;
+        transition: all 0.3s ease;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 1rem 0;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+
+    .quick-nav {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,209 @@
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --accent-color: #ff6b6b;
+    --error-color: #e74c3c;
+    --text-color: #2c3e50;
+    --background-start: #f3e7e9;
+    --background-end: #d3cce3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--background-start), var(--background-end));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    animation: pulse2 4s infinite;
+}
+@keyframes pulse2 {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.00125); }
+    100% { transform: scale(1); }
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    animation: float 6s ease-in-out infinite, fadeIn 1s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+    animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    top: -10px;
+    left: 5px;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    background-color: white;
+    padding: 0 5px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.forgot-password {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .login-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    input, button {
+        font-size: 1rem;
+    }
+}
+
+/* Additional styles for input focus animation */
+.input-group::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.input-group.input-focus::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Loading animation styles */
+@keyframes loading {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading .logo {
+    animation: loading 1s linear infinite, pulse 2s infinite;
+}

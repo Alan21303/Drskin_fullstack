@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease History - Skin Health Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/disease-history.css') }}">
+    <link rel="icon" type="image/x-icon" src="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="{{ url_for('static', filename='img/favicon.ico') }}" alt="Skin Health Hub Logo" width="50" height="50">
+            </a>
+            <nav>
+                <button class="menu-icon" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('disease_testing')}}">Test</a></li>
+                    <li><a href="{{ url_for('history') }}">History</a></li> <!-- Corrected the URL -->
+                    <li><a href="{{ url_for('doctor') }}">Doctor</a></li> <!-- Assuming you have a doctor route -->
+                    <li><a href="{{ url_for('profile') }}">Profile</a></li> <!-- Assuming you have a profile route -->
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li> <!-- Assuming you have a logout route -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="history-section">
+            <div class="container">
+                <br>
+                <h1 class="page-title">Disease History</h1>
+                <div class="history-grid" id="historyGrid">
+                    <!-- History cards will be dynamically inserted here -->
+                </div>
+                <button id="loadMoreButton" class="load-more-button">Show More</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="detailModal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <button id="closeModal" class="close-button" aria-label="Close modal">&times;</button>
+            <h2 id="modalDiseaseName"></h2>
+            <p id="modalDate"></p>
+            <img id="modalImage" src="" alt="Full size image of skin condition" class="modal-image">
+            <div class="modal-details">
+                <h3>Detailed Analysis</h3>
+                <div class="accordion">
+                    <button class="accordion-toggle" aria-expanded="false" aria-controls="accordionContent">
+                        <span>Additional Symptoms & Details</span>
+                        <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <div id="accordionContent" class="accordion-content">
+                        <p id="modalDetailedAnalysis"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-recommendations">
+                <h3>Recommendations</h3>
+                <p id="modalRecommendations"></p>
+            </div>
+            <button id="printReportButton" class="print-button">Print Report</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <div class="footer-logo">
+                <img src="{{ url_for('static', filename='img/favicon.ico') }}" alt="Skin Health Hub Logo" width="30" height="30">
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script/disease-history.js') }}"></script>
+</body>
+</html>
